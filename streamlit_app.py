@@ -7,7 +7,8 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-
+from ydata_profiling import ProfileReport
+from streamlit_pandas_profiling import st_profile_report
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.preprocessing import StandardScaler, LabelEncoder, PowerTransformer
 from sklearn.metrics import (
@@ -142,6 +143,12 @@ if df is not None:
         columns_to_remove = []
     else:
         columns_to_remove = None
+
+    st.subheader("2. Exploratory Data Analysis (EDA)")
+    if st.checkbox("Run Automated EDA Report"):
+        with st.spinner("Generating EDA report..."):
+            profile = ProfileReport(df, title="EDA", explorative=False)
+            st_profile_report(profile)
 
     # Add a button to trigger the cleaning process
     if st.button("Clean Data"):
