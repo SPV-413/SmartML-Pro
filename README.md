@@ -4,15 +4,13 @@ I built this app using Streamlit, which provides an end-to-end ML solution for d
 
 ## Workflow 
 
-1 EDA
+1 Remove unrequired columns
 
 2 Data Preprocessing Techniques Used:
 
 - Handling missing values (dropping nulls)
 
 - Removing duplicate rows
-
-- Remove unrequired columns
 
 - Outlier detection and removal using Z-score
 
