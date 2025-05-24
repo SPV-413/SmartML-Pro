@@ -10,4 +10,5 @@ xgboost
 azure-ai-inference
 ydata-profiling 
 streamlit-pandas-profiling
+setuptools
 
