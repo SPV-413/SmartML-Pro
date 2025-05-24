@@ -4,7 +4,7 @@ I built this app using Streamlit, which provides an end-to-end ML solution for d
 
 ## Workflow 
 
-1 Load data from MySQL or file upload & Remove unrequired columns
+1 Load data from MySQL or file upload & Remove unwanted columns
 
 2 Data Preprocessing Techniques Used:
 
