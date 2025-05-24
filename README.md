@@ -58,7 +58,7 @@ Integrated AI assistant using Azure OpenAI GPT-4.1 model. Accessible via sidebar
 Adding NLP preprocessing, clustering, deep learning, advanced visualization, and deployment features to this app.
 
 ## Link
-[https://spv-413.streamlit.app/
+[https://smartml-pro.streamlit.app/
 ](https://smartml-pro.streamlit.app/)
 
 ## Contact
