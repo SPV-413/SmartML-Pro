@@ -9,4 +9,5 @@ imbalanced-learn
 xgboost
 azure-ai-inference
 setuptools
-
+ydata-profiling 
+streamlit-pandas-profiling
