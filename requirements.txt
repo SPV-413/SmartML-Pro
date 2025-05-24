@@ -1,1 +1,13 @@
-streamlit>=1.26.0
+streamlit
+numpy
+pandas
+scikit-learn
+mysql-connector-python 
+matplotlib 
+seaborn 
+imbalanced-learn
+xgboost
+azure-ai-inference
+ydata-profiling 
+streamlit-pandas-profiling
+setuptools
