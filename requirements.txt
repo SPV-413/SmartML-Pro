@@ -8,4 +8,4 @@ seaborn
 imbalanced-learn
 xgboost
 azure-ai-inference
-python-3.12.3
+
