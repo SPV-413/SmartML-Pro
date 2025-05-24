@@ -8,7 +8,4 @@ seaborn
 imbalanced-learn
 xgboost
 azure-ai-inference
-ydata-profiling 
-streamlit-pandas-profiling
-setuptools
 python-3.12.3
