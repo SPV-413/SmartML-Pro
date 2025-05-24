@@ -7,8 +7,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from ydata_profiling import ProfileReport
-from streamlit_pandas_profiling import st_profile_report
+
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.preprocessing import StandardScaler, LabelEncoder, PowerTransformer
 from sklearn.metrics import (
@@ -145,13 +144,8 @@ if df is not None:
 
     
 
-    st.subheader("2. Exploratory Data Analysis (EDA)")
-    if st.checkbox("Run Automated EDA Report"):
-        with st.spinner("Generating EDA report..."):
-            profile = ProfileReport(df, title="EDA", explorative=False)
-            st_profile_report(profile)
-
-    st.subheader("3. Data Cleaning & Preprocessing")
+    
+    st.subheader("2. Data Cleaning & Preprocessing")
 
     st.write("Checking for missing values...")
     df = df.dropna()
