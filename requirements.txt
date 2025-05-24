@@ -1,2 +1,12 @@
-
+streamlit
+numpy
+pandas
+scikit-learn
+mysql-connector-python 
+matplotlib 
+seaborn 
+imbalanced-learn
+xgboost
+azure-ai-inference
+setuptools
 
