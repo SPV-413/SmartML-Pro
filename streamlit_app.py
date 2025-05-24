@@ -143,6 +143,17 @@ if df is not None:
         st.write(f"Unique values in column '{col}':")
         st.write(df[col].unique())
 
+    # --- Unwanted Feature Removal Section (Below Dataset Preview) ---
+    st.subheader("Unwanted Feature Removal")
+    option_list = ["Select an option", "Keep all features", "Remove selected features"]
+    decision = st.radio("Do you want to remove any unwanted features?", option_list, index=0, key="remove_decision")
+    if decision == "Remove selected features":
+        columns_to_remove = st.multiselect("Select columns to remove from analysis:", options=list(df.columns), key="feature_drop")
+    elif decision == "Keep all features":
+        columns_to_remove = []  # No columns to remove
+    else:
+        columns_to_remove = None  # No decision made yet
+
     st.subheader("2. Data Cleaning & Preprocessing")
 
     st.write("Checking for missing values...")
