@@ -133,16 +133,6 @@ df = st.session_state['df']
 
 # Proceed only if df is loaded
 if df is not None:
-    
-    st.subheader("Data Types")
-    st.write(df.dtypes)
-
-    st.subheader("Inspect Object Columns")
-    object_cols = df.select_dtypes(include='object').columns
-    for col in object_cols:
-        st.write(f"Unique values in column '{col}':")
-        st.write(df[col].unique())
-
     # --- Unwanted Feature Removal Section (Below Dataset Preview) ---
     st.subheader("Unwanted Feature Removal")
     option_list = ["Select an option", "Keep all features", "Remove selected features"]
@@ -153,6 +143,15 @@ if df is not None:
         columns_to_remove = []  # No columns to remove
     else:
         columns_to_remove = None  # No decision made yet
+        
+    st.subheader("Data Types")
+    st.write(df.dtypes)
+
+    st.subheader("Inspect Object Columns")
+    object_cols = df.select_dtypes(include='object').columns
+    for col in object_cols:
+        st.write(f"Unique values in column '{col}':")
+        st.write(df[col].unique())
 
     st.subheader("2. Data Cleaning & Preprocessing")
 
