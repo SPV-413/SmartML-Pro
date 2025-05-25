@@ -1,10 +1,10 @@
 # SmartML Pro: End-to-End Machine Learning with AI Assistant 
 
-I built this app using Streamlit, which provides an end-to-end ML solution for data science professionals to perform classification and regression tasks. It supports loading data from MySQL or file upload, comprehensive data preprocessing, model training with hyperparameter tuning, evaluation, and features an integrated AI assistant powered by Azure OpenAI GPT-4.1 for help and troubleshooting. The workflows for MySQL and file upload are similar. This app is designed to save time and speed up experimentation.
+I built this app using Streamlit, which provides an end-to-end ML solution for data science professionals to perform classification and regression tasks. It supports loading data from MySQL or file upload, comprehensive EDA, data preprocessing, model training with hyperparameter tuning, evaluation, and features an integrated AI assistant powered by Azure OpenAI GPT-4.1 for help and troubleshooting. The workflows for MySQL and file upload are similar. This app is designed to save time and speed up experimentation.
 
 ## Workflow 
 
-1 Load data from MySQL or file upload & Remove unwanted columns
+1 Load data from MySQL or file upload, Remove unwanted columns & Visualize EDA
 
 2 Data Preprocessing Techniques Used:
 
@@ -56,6 +56,10 @@ Integrated AI assistant using Azure OpenAI GPT-4.1 model. Accessible via sidebar
 
 ## Future improvements
 Adding NLP preprocessing, clustering, deep learning, advanced visualization, and deployment features to this app.
+
+## Note
+- After completing the EDA visualization, disable it and then proceed, as it may slow down the training of ML models.
+- I recently made some small updates and added new features.
 
 ## Link
 [https://smartml-pro.streamlit.app/
