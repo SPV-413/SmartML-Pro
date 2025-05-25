@@ -7,6 +7,10 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+from ydata_profiling import ProfileReport
+from streamlit_pandas_profiling import st_profile_report
+import warnings
+warnings.filterwarnings('ignore')
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.preprocessing import StandardScaler, LabelEncoder, PowerTransformer
 from sklearn.metrics import (
@@ -142,7 +146,12 @@ if df is not None:
     else:
         columns_to_remove = None
 
-    
+    st.subheader("2. Exploratory Data Analysis (EDA)")
+    if st.checkbox("Run Automated EDA Report"):
+        with st.spinner("Generating EDA report..."):
+            profile = ProfileReport(df, title="EDA", explorative=False)
+            st_profile_report(profile)
+
 
     # Add a button to trigger the cleaning process
     if st.button("🧹 Clean Data"):
@@ -170,7 +179,7 @@ if df is not None:
                     st.write(df[col].unique())
 
             # --- Data Cleaning & Preprocessing ---
-            st.subheader("2. Data Cleaning & Preprocessing")
+            st.subheader("3. Data Cleaning & Preprocessing")
             st.write("Checking for missing values...")
             df = df.dropna()
             st.write("Null values removed.")
@@ -231,7 +240,7 @@ if df is not None:
             sns.heatmap(corr, annot=True, fmt=".2f", cmap="coolwarm", ax=ax)
             st.pyplot(fig)
 
-        st.subheader("3. Select Target and Features")
+        st.subheader("4. Select Target and Features")
         target_col = st.selectbox("Select Target Column", df.columns)
         default_features = [col for col in df.columns if col != target_col]
         feature_cols = st.multiselect("Select Feature Columns", default_features, default=default_features)
@@ -242,10 +251,10 @@ if df is not None:
             X = df[feature_cols]
             y = df[target_col]
 
-            st.subheader("4. Data Splitting")
+            st.subheader("5. Data Splitting")
             X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
-            st.subheader("5. Model Training & Evaluation")
+            st.subheader("6. Model Training & Evaluation")
             task_type = st.radio("Select Task Type", ["Classification", "Regression"])
 
             # SMOTE imbalance check and option only for classification
