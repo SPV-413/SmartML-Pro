@@ -5,6 +5,7 @@ from azure.ai.inference.models import SystemMessage, UserMessage
 from azure.core.credentials import AzureKeyCredential
 import pandas as pd
 import numpy as np
+import re
 import matplotlib.pyplot as plt
 import seaborn as sns
 from ydata_profiling import ProfileReport
