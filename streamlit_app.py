@@ -180,6 +180,56 @@ if df is not None:
 
             # --- Data Cleaning & Preprocessing ---
             st.subheader("3. Data Cleaning & Preprocessing")
+            
+            # Drop columns with >95% missing
+            st.write("Dropping columns with >95% missing values...")
+            null_thresh = int(0.95 * len(df))
+            cols_to_drop_null = df.columns[df.isnull().sum() > null_thresh].tolist()
+            if len(cols_to_drop_null) > 0:
+                df = df.drop(columns=cols_to_drop_null)
+                st.write(f"Dropped columns: {', '.join(cols_to_drop_null)}")
+            else:
+                st.write("No columns with >95% missing values found.")
+                
+            # Drop constant columns
+            st.write("Dropping constant columns...")
+            constant_cols = df.columns[df.nunique() <= 1].tolist()
+            if len(constant_cols) > 0:
+                df = df.drop(columns=constant_cols)
+                st.write(f"Dropped constant columns: {', '.join(constant_cols)}")
+            else:
+                st.write("No constant columns found.")
+                
+            # Remove special characters from object columns
+            st.write("Removing special characters from text columns...")
+            object_cols = df.select_dtypes(include=['object', 'string']).columns
+            if len(object_cols) > 0:
+                for col in object_cols:
+                    if df[col].notna().any() and df[col].dtype == 'object':
+                        original_col_str = df[col].astype(str).copy()
+                        df[col] = df[col].astype(str).apply(lambda x: re.sub(r'[^\w\s.,;:?!@#%&()/\-\+]', '', x))
+                        if not original_col_str.equals(df[col]):
+                            st.write(f"Special characters removed from column '{col}'.")
+            else:
+                st.write("No text columns found for cleaning.")
+                
+            # Convert numeric-like strings to numbers
+            st.write("Converting numeric-like strings to numeric values...")
+            object_cols = df.select_dtypes(include='object').columns
+            if len(object_cols) > 0:
+                for col in object_cols:
+                    if df[col].notna().any():
+                        try:
+                            converted_series = pd.to_numeric(df[col], errors='coerce')
+                            if converted_series.notna().sum() / df[col].notna().sum() > 0.8 and pd.api.types.is_numeric_dtype(converted_series):
+                                df[col] = converted_series
+                                st.write(f"Converted column '{col}' to numeric.")
+                        except Exception as e:
+                            st.write(f"Error converting column '{col}': {e}")
+            else:
+                st.write("No object columns available for numeric conversion.")
+
+
             st.write("Checking for missing values...")
             df = df.dropna()
             st.write("Null values removed.")
