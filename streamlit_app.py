@@ -286,7 +286,7 @@ if df is not None:
     if st.session_state.get('cleaned', False):
         if st.checkbox("Show Correlation Heatmap"):
             corr = df.corr()
-            fig, ax = plt.subplots(figsize=(10, 8))
+            fig, ax = plt.subplots(figsize=(40, 40))
             sns.heatmap(corr, annot=True, fmt=".2f", cmap="coolwarm", ax=ax)
             st.pyplot(fig)
 
