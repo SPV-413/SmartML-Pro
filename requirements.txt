@@ -11,3 +11,4 @@ azure-ai-inference
 setuptools
 ydata-profiling 
 streamlit-pandas-profiling
+openpyxl
