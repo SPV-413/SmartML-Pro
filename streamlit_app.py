@@ -136,6 +136,12 @@ df = st.session_state['df']
 
 # Proceed only if df is loaded
 if df is not None:
+    st.subheader("2. Exploratory Data Analysis (EDA)")
+    if st.checkbox("Run Automated EDA Report"):
+        with st.spinner("Generating EDA report..."):
+            profile = ProfileReport(df, title="EDA", explorative=False)
+            st_profile_report(profile)
+    
     # --- Unwanted Feature Removal Section ---
     st.subheader("Unwanted Feature Removal")
     option_list = ["Select an option", "Keep all features", "Remove selected features"]
@@ -146,13 +152,6 @@ if df is not None:
         columns_to_remove = []
     else:
         columns_to_remove = None
-
-    st.subheader("2. Exploratory Data Analysis (EDA)")
-    if st.checkbox("Run Automated EDA Report"):
-        with st.spinner("Generating EDA report..."):
-            profile = ProfileReport(df, title="EDA", explorative=False)
-            st_profile_report(profile)
-
 
     # Add a button to trigger the cleaning process
     if st.button("🧹 Clean Data"):
