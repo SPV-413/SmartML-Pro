@@ -1,7 +1,7 @@
 streamlit
 numpy
 pandas
-scikit-learn
+scikit-learn==1.4.0
 mysql-connector-python 
 matplotlib 
 seaborn 
