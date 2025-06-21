@@ -6,7 +6,7 @@ mysql-connector-python
 matplotlib 
 seaborn 
 imbalanced-learn
-xgboost==3.0.2
+xgboost
 azure-ai-inference
 setuptools
 ydata-profiling 
