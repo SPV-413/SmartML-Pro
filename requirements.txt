@@ -5,7 +5,7 @@ scikit-learn
 mysql-connector-python 
 matplotlib 
 seaborn 
-imbalanced-learn
+--upgrade imbalanced-learn
 xgboost
 azure-ai-inference
 setuptools
